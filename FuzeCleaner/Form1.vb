@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports System.Net
 Imports System.Runtime.CompilerServices
 
 Public Module MyExtensions
@@ -72,7 +71,7 @@ Public Class Form1
             Directory.Delete(LatestPatch.FullName, True)
         End If
         LatestPatch = Nothing
-        OldPatch = {}
+        OldPatch = Array.Empty(Of DirectoryInfo)()
         Scan()
     End Sub
 
