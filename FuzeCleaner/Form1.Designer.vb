@@ -30,6 +30,7 @@ Partial Class Form1
         ConfigProfile = New CheckBox()
         Clean = New Button()
         About = New Label()
+        FirewallRules = New CheckBox()
         SuspendLayout()
         ' 
         ' ShaderCache
@@ -37,7 +38,7 @@ Partial Class Form1
         ShaderCache.AutoSize = True
         ShaderCache.Location = New Point(12, 12)
         ShaderCache.Name = "ShaderCache"
-        ShaderCache.Size = New Size(310, 29)
+        ShaderCache.Size = New Size(284, 29)
         ShaderCache.TabIndex = 0
         ShaderCache.Text = "[扫描中]着色器缓存（仅Vulkan）"
         ShaderCache.UseVisualStyleBackColor = True
@@ -49,7 +50,7 @@ Partial Class Form1
         Benchmark.CheckState = CheckState.Checked
         Benchmark.Location = New Point(12, 47)
         Benchmark.Name = "Benchmark"
-        Benchmark.Size = New Size(219, 29)
+        Benchmark.Size = New Size(213, 29)
         Benchmark.TabIndex = 1
         Benchmark.Text = "[扫描中]性能测试数据"
         Benchmark.UseVisualStyleBackColor = True
@@ -61,7 +62,7 @@ Partial Class Form1
         SecurityPatch.CheckState = CheckState.Checked
         SecurityPatch.Location = New Point(12, 82)
         SecurityPatch.Name = "SecurityPatch"
-        SecurityPatch.Size = New Size(238, 29)
+        SecurityPatch.Size = New Size(231, 29)
         SecurityPatch.TabIndex = 2
         SecurityPatch.Text = "[扫描中]过时的安全措施"
         SecurityPatch.UseVisualStyleBackColor = True
@@ -71,7 +72,7 @@ Partial Class Form1
         SecurityPatchNew.AutoSize = True
         SecurityPatchNew.Location = New Point(12, 117)
         SecurityPatchNew.Name = "SecurityPatchNew"
-        SecurityPatchNew.Size = New Size(485, 29)
+        SecurityPatchNew.Size = New Size(448, 29)
         SecurityPatchNew.TabIndex = 3
         SecurityPatchNew.Text = "[扫描中]最新的安全措施（下次进入游戏会重新下载）"
         SecurityPatchNew.UseVisualStyleBackColor = True
@@ -82,14 +83,14 @@ Partial Class Form1
         ConfigProfile.Enabled = False
         ConfigProfile.Location = New Point(12, 152)
         ConfigProfile.Name = "ConfigProfile"
-        ConfigProfile.Size = New Size(295, 29)
+        ConfigProfile.Size = New Size(266, 29)
         ConfigProfile.TabIndex = 4
         ConfigProfile.Text = "[开发中]配置文件（谨慎操作）"
         ConfigProfile.UseVisualStyleBackColor = True
         ' 
         ' Clean
         ' 
-        Clean.Location = New Point(12, 187)
+        Clean.Location = New Point(12, 222)
         Clean.Name = "Clean"
         Clean.Size = New Size(112, 34)
         Clean.TabIndex = 7
@@ -99,11 +100,21 @@ Partial Class Form1
         ' About
         ' 
         About.AutoSize = True
-        About.Location = New Point(130, 192)
+        About.Location = New Point(130, 227)
         About.Name = "About"
-        About.Size = New Size(179, 25)
+        About.Size = New Size(164, 25)
         About.TabIndex = 8
-        About.Text = "版本：1.0.0   琴梨梨"
+        About.Text = "版本：1.1.0   琴梨梨"
+        ' 
+        ' FirewallRules
+        ' 
+        FirewallRules.AutoSize = True
+        FirewallRules.Location = New Point(12, 187)
+        FirewallRules.Name = "FirewallRules"
+        FirewallRules.Size = New Size(196, 29)
+        FirewallRules.TabIndex = 9
+        FirewallRules.Text = "[扫描中]防火墙规则"
+        FirewallRules.UseVisualStyleBackColor = True
         ' 
         ' Form1
         ' 
@@ -113,6 +124,7 @@ Partial Class Form1
         AutoSizeMode = AutoSizeMode.GrowAndShrink
         BackColor = Color.White
         ClientSize = New Size(544, 344)
+        Controls.Add(FirewallRules)
         Controls.Add(About)
         Controls.Add(Clean)
         Controls.Add(ConfigProfile)
@@ -135,4 +147,5 @@ Partial Class Form1
     Friend WithEvents ConfigProfile As CheckBox
     Friend WithEvents Clean As Button
     Friend WithEvents About As Label
+    Friend WithEvents FirewallRules As CheckBox
 End Class

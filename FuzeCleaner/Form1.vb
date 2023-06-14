@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Runtime.CompilerServices
+Imports WindowsFirewallHelper
 
 Public Module MyExtensions
     <Extension()>
@@ -15,6 +16,7 @@ Public Class Form1
 
     Dim LatestPatch As DirectoryInfo = Nothing
     Dim OldPatch As DirectoryInfo() = {}
+    Dim RulesToClean As IFirewallRule() = {}
     Private Function FolderSize(strFolder As String) As Long
         Dim size As Long = (From strFile In My.Computer.FileSystem.GetFiles(strFolder,
               FileIO.SearchOption.SearchAllSubDirectories)
@@ -70,8 +72,14 @@ Public Class Form1
         If SecurityPatchNew.Checked Then
             Directory.Delete(LatestPatch.FullName, True)
         End If
+        If FirewallRules.Checked Then
+            For Each Rule In RulesToClean
+                FirewallManager.Instance.Rules.Remove(Rule)
+            Next
+        End If
         LatestPatch = Nothing
         OldPatch = Array.Empty(Of DirectoryInfo)()
+        RulesToClean = Array.Empty(Of IFirewallRule)
         Scan()
     End Sub
 
@@ -133,5 +141,14 @@ Public Class Form1
             SecurityPatch.Checked = False
             SecurityPatch.Enabled = False
         End Try
+        Dim Rules = FirewallManager.Instance.Rules.ToArray()
+        For Each Rule In Rules
+            If Rule.ApplicationName IsNot Nothing AndAlso Rule.ApplicationName.ToLower().Contains("rainbowsix") Then
+                RulesToClean.Add(Rule)
+            End If
+        Next
+        FirewallRules.Text = "[" + RulesToClean.Length.ToString() + "条]防火墙规则"
     End Sub
+
+
 End Class
